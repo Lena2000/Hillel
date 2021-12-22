@@ -1,0 +1,18 @@
+***Программа, которая находит среднее арифметическое значение двух чисел и произвольного количества чисел.***
+
+package hillel;
+
+
+public class Main {
+
+    public static void main(String[] args) {
+        double sum=0;
+        int size=0;
+      for (String str:args){
+          size++;
+          sum=sum+Integer.parseInt(str);
+      }
+      sum=sum/size;
+        System.out.println(sum);
+  }
+}
