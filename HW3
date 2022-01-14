@@ -43,3 +43,19 @@ public class Main {
 }
 
     
+    ***3.Поиск факториала с помощью цикла while***
+    
+    public class Main {
+
+    public static void main(String[] args){
+       int count = 9;
+       int sum=1;
+        while (count >= 1){
+            sum*=count;
+            --count;
+        }
+        System.out.println("Факториал = " + sum);
+
+}}
+
+
