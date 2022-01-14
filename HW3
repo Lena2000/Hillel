@@ -13,3 +13,33 @@ public class Main {
 
 
 ***2.Дано число n при помощи цикла for посчитать факториал n!***
+class Test.java:
+
+package hillel;
+
+public class Test{
+    static int calculateFactorial(int n){
+        int result = 1;
+        for (int i = 1; i <=n; i ++){
+            result = result*i;
+        }
+        return result;
+    }}
+    
+    
+    class Main.java:
+    
+    package hillel;
+
+import static hillel.Test.calculateFactorial;
+
+public class Main {
+
+    public static void main(String[] args){
+        System.out.println(calculateFactorial(4));
+        // write your code here
+    }
+
+}
+
+    
