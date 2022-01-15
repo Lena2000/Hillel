@@ -224,3 +224,33 @@ public class Main {
         System.out.println("Min - "+ min);
     }
 }
+
+
+
+***9.Дан массив размерности N, найти наибольший элемент массива и вывести на консоль (если наибольших элементов несколько — вывести их все).***
+
+package hillel;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        int[] numbers = new int[10];
+
+        System.out.println("Input elements of array:");
+        for (int i = 0; i < 10; i++) {
+            numbers[i] = input.nextInt();
+        }
+
+        int max = 0;
+
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] > max) {
+                max = numbers[i];
+            }
+        }
+        System.out.println(max);
+
+    }}
+    
