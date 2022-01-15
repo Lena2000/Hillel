@@ -132,3 +132,22 @@ public class Main {
     }
 }
 
+
+
+***6.Вывести 10 первых чисел последовательности 0, -5,-10,-15..***
+
+package hillel;
+
+public class Main {
+    public static void main(String[] args) {
+        int i = 0;
+        do {
+            System.out.println(i);
+            i -= 5;
+        }
+        while (i >=-5*10);
+    }
+}
+
+
+***7.Вывести на экран таблицу умножения на Х: (любое число вводимое из консоли)***
