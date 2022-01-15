@@ -59,3 +59,38 @@ public class Main {
 }}
 
 
+
+***4.Поиск факториала с использованием цикла do - while***
+
+package hillel;
+public class Main {
+
+    public static void main(String[] args){
+        int f = 1;
+        int count=10;
+        int n=10;
+        do{
+            for(int i=1; i<=count; i++){
+                f*=i;
+            }
+        count++;
+        }
+        while (count<=n);
+        System.out.println(f);
+
+    }}
+
+
+***4.Поиск нечетных чисел от 1 до 99 с использованием цикла do - while***
+package hillel;
+
+public class Main {
+    public static void main(String[] args) {
+        int i = 1;
+        do {
+            System.out.println(i);
+            i += 2;
+        }
+        while (i <= 99);
+    }
+}
