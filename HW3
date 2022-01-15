@@ -141,14 +141,14 @@ package hillel;
 public class Main {
     public static void main(String[] args) {
         int i = 0;
+        int n=10;
         do {
             System.out.println(i);
             i -= 5;
         }
-        while (i >=-5*10);
+        while (i >=-5*n);
     }
 }
-
 
 
 ***7.Вывести на экран таблицу умножения на Х: (любое число вводимое из консоли)***
