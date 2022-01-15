@@ -150,4 +150,23 @@ public class Main {
 }
 
 
+
 ***7.Вывести на экран таблицу умножения на Х: (любое число вводимое из консоли)***
+
+package hillel;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Введите число на которое будут умножены все числа: ");
+        int a = input.nextInt();
+
+        for (int i = 1; i <= 9; i++) {
+            int count=a*i;
+            System.out.println(a + " * " + i + " = " + count);
+            }
+        }
+    }
+
