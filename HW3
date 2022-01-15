@@ -111,3 +111,24 @@ public class Main {
         while (i <= 99);
     }
 }
+
+
+***5.Даны переменные x и n вычислить x^n.***
+
+package hillel;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Введите число, которое хотите возвести в степень: ");
+        int a = input.nextInt();
+        
+        System.out.println("Введите степень, в которую возводите число: ");
+        int b = input.nextInt();
+        
+        System.out.println("Число " + a + " в степени " + b + " равно: " + Math.pow(a, b));
+    }
+}
+
