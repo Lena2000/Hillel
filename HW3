@@ -348,3 +348,28 @@ public class Main {
         System.out.println(average);
     }
 }
+
+
+***13.Вывести на экран шахматную доску 8х8 в виде 2 мерного массива (W - белые клетки , B - черные клетки)***
+
+package hillel;
+
+public abstract class Main {
+    public static void main(String[] args) {
+
+        String[][] chessBoard = new String[8][8];
+        for (int i = 0; i < chessBoard.length; i++) {
+            for (int j = 0; j < chessBoard[0].length; j++) {
+                if ((i + j) % 2 == 0) chessBoard[i][j] = "W";
+                else chessBoard[i][j] = "B";
+            }
+        }
+        for (int i = 0; i < chessBoard.length; i++) {
+            for (int j = 0; j < chessBoard[0].length; j++) {
+                System.out.print(" " + chessBoard[i][j] + " ");
+            }
+            System.out.println();
+    }
+
+}
+}
