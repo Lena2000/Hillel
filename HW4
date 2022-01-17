@@ -1,0 +1,65 @@
+package hillel;
+import java.util.Scanner;
+
+public class Car {
+    private double volume; //объем бака
+    private double balance; //остаток в баке
+    private double consumption; //расход топлива на 100 км
+
+    Scanner input = new Scanner(System.in);
+
+    void fillTank() {  //залить полный бак с учетом объема остатка
+    setVolume(getVolume() - getBalance());
+        System.out.println(getVolume());
+    }
+
+    void fuelBalance() {  //определить остаток топлива по преодолении N км
+        System.out.println("Enter N km: ");
+        int N=input.nextInt();
+        setBalance(getVolume() - getConsumption() *N/100);
+        System.out.println(getBalance());
+    }
+
+    void howMuchFuel() {//определить сколько надо до заправить топлива при преодолении N км
+        System.out.println("Enter N km: ");
+        int N=input.nextInt();
+        double fuel;
+        fuel=(getVolume() - getBalance())*N/100;
+        System.out.println(fuel);
+    }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(double volume) {
+        this.volume = volume;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public double getConsumption() {
+        return consumption;
+    }
+
+    public void setConsumption(double consumption) {
+        this.consumption = consumption;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
