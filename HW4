@@ -1,65 +1,106 @@
+*****Class Main******
+
 package hillel;
+
 import java.util.Scanner;
 
-public class Car {
-    private double volume; //объем бака
-    private double balance; //остаток в баке
-    private double consumption; //расход топлива на 100 км
+public abstract class Main {
+    public static void main(String[] args) {
 
-    Scanner input = new Scanner(System.in);
+    Car car = new Car(100, 20, 40,5);
+        System.out.println("Залить полный бак с учетом объема остатка необходимо на: "+ car.fillTank() + " литров");
+        System.out.println("Остаток топлива по преодолении N км: "+ car.fuelBalance() + " литров");
+        System.out.println("Сколько надо дозаправить топлива при преодолении N км: "+ car.howMuchFuel() + " литров");
 
-    void fillTank() {  //залить полный бак с учетом объема остатка
-    setVolume(getVolume() - getBalance());
-        System.out.println(getVolume());
-    }
+    Fuel fuel = new Fuel(5);
+        System.out.println("Сколько литров потрачено на поездку в сумме: " + fuel.howMuchToppedUp() + " литров");
+        System.out.println("Сколько стоила вся поездка: " + fuel.howMuchCost() + " гривен");
 
-    void fuelBalance() {  //определить остаток топлива по преодолении N км
-        System.out.println("Enter N km: ");
-        int N=input.nextInt();
-        setBalance(getVolume() - getConsumption() *N/100);
-        System.out.println(getBalance());
-    }
-
-    void howMuchFuel() {//определить сколько надо до заправить топлива при преодолении N км
-        System.out.println("Enter N km: ");
-        int N=input.nextInt();
-        double fuel;
-        fuel=(getVolume() - getBalance())*N/100;
-        System.out.println(fuel);
-    }
-
-    public double getVolume() {
-        return volume;
-    }
-
-    public void setVolume(double volume) {
-        this.volume = volume;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public double getConsumption() {
-        return consumption;
-    }
-
-    public void setConsumption(double consumption) {
-        this.consumption = consumption;
     }
 }
 
 
 
+*****Class Car******
+
+package hillel;
+
+public class Car {
+    double volume; //объем бака
+    double balance; //остаток в баке
+    double consumption; //расход топлива на 100 км
+    double N; //кол-во км
+
+
+    Car(double a, double b, double c, double d) {
+        volume = a;
+        balance = b;
+        consumption = c;
+        N = d;
+    }
+
+    double fillTank() {  //залить полный бак с учетом объема остатка
+        return volume - balance;
+    }
+
+    double fuelBalance() {  //определить остаток топлива по преодолении N км
+        return balance - consumption * N / 100;
+    }
+
+    double howMuchFuel() {//определить сколько надо дозаправить топлива при преодолении N км
+        return (volume - balance) - consumption * N / 100;
+    }
+}
 
 
 
+*****Class Fuel******
 
+package hillel;
 
+public class Fuel {
+    double volume; //объем бака
+    double balance; //остаток в баке
 
+    double distance1; //кол-во литров на расстояние Одесса - Кривое Озеро
+    double distance2; //кол-во литров на расстояние Кривое Озеро - Жашков
+    double distance3; //кол-во литров на расстояние Жашков - Киев
+    double refill; //кол-во литров, которое необходимо долить
+    double cost;
+    double c; //сколько литров осталось
 
+    public Fuel(double k){
+        cost = k;
+        distance1 = 400;
+        distance2 = 200;
+        distance3 = 400;
+    }
 
+    double howMuchToppedUp1(){
+        c = balance - distance1;
+        refill = volume - c;
+        return refill;
+    }
+
+    double howMuchToppedUp2(){
+        c = balance - distance2;
+        refill = volume - c;
+        return refill;
+    }
+
+    double howMuchToppedUp3(){
+        c = balance - distance3;
+        refill = volume - c;
+        return refill;
+
+    }
+
+    double howMuchToppedUp(){
+        double v = howMuchToppedUp1() + howMuchToppedUp2() + howMuchToppedUp3(); //сколько потрачено литров в сумме
+        return v;
+    }
+
+    double howMuchCost(){
+        return howMuchToppedUp()*cost;  //стоимость всей поездки
+    }
+}
