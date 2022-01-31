@@ -1,0 +1,149 @@
+***Class MyArray***
+
+
+package hillel;
+import java.util.Arrays;
+
+public class MyArray {
+    public static void main(String[] args) {
+
+        ArrayToList arrayToList = new ArrayToList(5);
+
+        arrayToList.add("Ручка");
+        arrayToList.add("Листик");
+        arrayToList.add("Карандаш");
+        arrayToList.add("Телефон");
+        arrayToList.add("Блокнот");
+
+        arrayToList.print();
+
+        System.out.println();
+        arrayToList.add(4,"!!!!!");
+        arrayToList.print();
+        System.out.println();
+        arrayToList.delete(2);
+        arrayToList.print();
+        System.out.println();
+        System.out.println(arrayToList.get(4));
+        arrayToList.delete("!!!!!");
+        arrayToList.print();
+        System.out.println();
+        System.out.println(arrayToList.get(8));
+        System.out.println(arrayToList.get(3));
+        System.out.println("В сумке всего: " + arrayToList.getCount() + " элемент(а/ов)");
+
+
+    }
+}
+
+
+
+
+***Class ArrayToList***
+
+package hillel;
+import java.util.Arrays;
+import java.util.Objects;
+
+public class ArrayToList {
+
+    private int count;
+    private String[] arr;
+
+
+    public ArrayToList(int length) {
+        arr = new String[length];
+        count = 0;
+    }
+
+    private void checkAndChangeSize() {
+        if (arr.length < count + 1) {
+            int doubledSize = (arr.length * 2);
+            String[] arr1 = new String[doubledSize];
+            System.arraycopy(arr, 0, arr1, 0, arr.length);
+            arr = arr1;
+        }
+    }
+
+    public void print() {
+        for (Object obj : arr) {
+
+            System.out.print(obj + " ");
+        }
+    }
+
+    public boolean add(String string) {
+        checkAndChangeSize();
+        arr[count] = string;
+        count++;
+        return true;
+
+    }
+
+    public boolean add(int index, String string) {
+        checkAndChangeSize();
+        if (index > count) {
+            add(string);
+        }
+        if (index <= count) {
+            for (int i = arr.length - 1; i > index; i--) {
+                arr[i] = arr[i - 1];
+            }
+            arr[index] = string;
+        }
+        count++;
+        return true;
+    }
+
+
+    public boolean delete(int index) {
+
+        for (int i = index; i < arr.length-1; i++) {
+            arr[i - 1] = arr[i];
+            arr[i] = null;
+        }
+        count--;
+        return true;
+
+    }
+
+    public boolean delete(String string) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (Objects.equals(arr[i], string)) {
+                delete(i +1);
+            }
+        }
+        return true;
+    }
+
+    public String get(int index) {
+        if (index > count) {
+            return "В Сумке в ячейке - " + index + " - пусто";
+        }
+        return "В сумке лежит " + arr[index];
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public String[] getArray() {
+        return arr;
+    }
+
+    public void setArray(String[] array) {
+        this.arr = array;
+    }
+
+    @Override
+    public String toString() {
+        return "ArrayToList{" +
+                "count=" + count +
+                ", array=" + Arrays.toString(arr) +
+                '}';
+    }
+}
